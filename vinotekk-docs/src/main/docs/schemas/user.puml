@@ -1,0 +1,26 @@
+@startuml
+class User {
+ - userName : String
+ - firstName : String
+ - lastName : String
+ - gender : Gender
+ - email : String
+ - status : UserStatus
+ - dateOfBirth : LocalDate  
+}
+
+enum Gender {
+  M
+  F
+}
+
+enum UserStatus {
+  CANDIDATE
+  ACTIVATED
+  DEACTIVATED
+  BANNED
+}
+
+User -left- UserStatus 
+User -right- Gender
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+interface UserRepository {
+  findUserByEmail(email: String) : User
+  findUSerByUserName(userName : String) : User
+}
+
+interface WineRepository {
+  findWineByUser(userName : String) : List<Wine>
+}
+
+interface WineEstateRepository {
+  findWineEstateByName(name: String) : WineEstate
+  findWineEstateByOwner(owner: String) : List<WineEstate>
+}
+
+@enduml

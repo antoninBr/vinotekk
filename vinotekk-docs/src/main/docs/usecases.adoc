@@ -1,0 +1,3 @@
+== UseCases
+
+Here is the usecases of Vinotekk.

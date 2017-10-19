@@ -1,0 +1,12 @@
+== Introduction
+
+`Wouldn't be nice to have its personal sommelier anywhere anytime ?`
+
+Vinotekk is a full OpenSource https://www.gnu.org/licenses/quick-guide-gplv3.en.html[GNU GPLv3] set of tools designed to offer a complete control of its Wine Vault, a easy Wine Bottle checking in stores and a social network used by plenty of Wine lovers.
+
+.Key features:
+* An online application used as a Wine Vault
+* An Android mobile Application for quick Wine Bottle checking using OCR
+* A wine Pro and amateur oriented social network
+* All in its OpenSource glory
+

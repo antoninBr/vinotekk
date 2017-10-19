@@ -1,0 +1,72 @@
+== Domain
+
+Here is the data object, repositories and services used by Vinotekk.
+
+=== Components
+
+Vinotekk has a bunch of components in order to handle each of its key fetaures.
+
+.Components
+|===
+|Name |Description
+
+|app
+|Android application
+
+|front
+|Angular 4 front
+
+|business
+|All the services
+
+|ocr
+|Ocr related managers
+
+|domain
+|Objects to persist, get, update, etc...
+
+|===
+
+. Overall components links
+
+[plantuml,components-diagram,svg]
+----
+include::schemas/components.puml[]
+----
+
+
+=== DataModel
+
+==== User
+
+[plantuml,user-diagram,svg]
+----
+include::schemas/user.puml[]
+----
+
+==== Wine
+
+[plantuml,wine-diagram,svg]
+----
+include::schemas/wine.puml[]
+----
+
+=== Repositories
+
+[plantuml,repo-diagram,svg]
+----
+include::schemas/repositories.puml[]
+----
+
+=== Services
+
+[plantuml,services-diagram,svg]
+----
+include::schemas/services.puml[]
+----
+
+
+
+
+
+

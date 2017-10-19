@@ -1,0 +1,14 @@
+@startuml
+interface WineService{
+  addWineToUser(userName: String, wine : Wine)
+  addWineToUser(userName : String, imageBase64 : String)
+  updateWineOfUser(userName : String, wine : Wine)
+  getWinesOfUser(userName : UserName) : List<Wine>
+}
+
+interface UserService{
+  createUser(userName : String, email : String, password : String) : User
+  validateUser(token : String) : boolean
+  authenticateUser(userName : String, passwordCandidate : String) : User
+}
+@enduml

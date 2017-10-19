@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+
+    <groupId>fr.brugnot.vinotekk</groupId>
+    <artifactId>vinotekk-parent</artifactId>
+    <version>0.1-SNAPSHOT</version>
+
+    <modules>
+        <module>../vinotekk-domain</module>
+        <module>../vinotekk-business</module>
+        <module>../vinotekk-ws</module>
+        <module>../vinotekk-docs</module>
+    </modules>
+
+    <properties>
+        <java-version>1.8</java-version>
+        <lombok.version>1.16.18</lombok.version>
+        <junit.version>4.12</junit.version>
+        <mongo-java-driver.version>2.11.0</mongo-java-driver.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <asciidoctor-maven-plugin.version>1.5.6</asciidoctor-maven-plugin.version>
+        <asciidoctorj.diagram.version>1.5.4.1</asciidoctorj.diagram.version>
+    </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>fr.brugnot.vinotekk</groupId>
+                <artifactId>vinotekk-spring-dependencies</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <!-- mongodb java driver -->
+            <dependency>
+                <groupId>org.mongodb</groupId>
+                <artifactId>mongo-java-driver</artifactId>
+                <version>${mongo-java-driver.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.flapdoodle.embed</groupId>
+                <artifactId>de.flapdoodle.embed.mongo</artifactId>
+                <version>2.0.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.asciidoctor</groupId>
+                    <artifactId>asciidoctor-maven-plugin</artifactId>
+                    <version>${asciidoctor-maven-plugin.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.asciidoctor</groupId>
+                            <artifactId>asciidoctorj-diagram</artifactId>
+                            <version>${asciidoctorj.diagram.version}</version>
+                        </dependency>
+                    </dependencies>
+                    <executions>
+                        <execution>
+                            <id>output-html</id>
+                            <phase>process-resources</phase>
+                            <goals>
+                                <goal>process-asciidoc</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+
+                    <configuration>
+                        <!-- available are : coderay, highlightjs -->
+                        <sourceHighlighter>coderay</sourceHighlighter>
+                        <outputDirectory>target/docs</outputDirectory>
+                        <backend>html5</backend>
+                        <!--<embedAssets>true</embedAssets>-->
+                        <requires>
+                            <require>asciidoctor-diagram</require>
+                        </requires>
+                        <attributes>
+                            <imagesdir>./images</imagesdir>
+                            <toc>left</toc>
+                            <icons>font</icons>
+                            <sectanchors>true</sectanchors>
+                            <idprefix />
+                            <idseparator>-</idseparator>
+
+                            <toc>left</toc>
+                            <toclevels>5</toclevels>
+                            <numbered />
+                            <revnumber>${project.version} - GNU GPLv3</revnumber>
+                            <author>Antonin Brugnot</author>
+                            <email>antonin.brugnot@laposte.net</email>
+                            <authorinitials>ABR</authorinitials>
+                        </attributes>
+                        <headerFooter>true</headerFooter>
+                        <sourceDirectory>src/main/docs</sourceDirectory>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <!-- Java 8 sources -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java-version}</source>
+                    <target>${java-version}</target>
+                </configuration>
+            </plugin>
+    </plugins>
+    </build>
+</project>

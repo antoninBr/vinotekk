@@ -1,0 +1,23 @@
+@startuml
+
+interface mongoDbBase
+interface javaOcr
+interface HTTP
+
+component business
+component ws
+component domain
+component front
+component app
+component ocr
+
+mongoDbBase -down- domain
+javaOcr-down- ocr
+domain -left- business
+business -down- ws
+business -left- ocr
+ws -- HTTP
+front -up- HTTP
+app -up- HTTP
+
+@enduml

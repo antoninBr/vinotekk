@@ -1,0 +1,52 @@
+@startuml
+class Wine {
+ - label : String
+ - commentary : String
+ - year : YearDate
+ - quantity : int
+ - rating : int
+ - unitPrice : double
+ - wineEstate : WineEstate
+ - bottleSize : BottleSize
+ - type : WineType
+ - status : WineStatus
+}
+
+class WineEstate {
+ - name : String
+ - owner : String
+ - description : String
+}
+
+enum BottleSize {
+  SPLIT
+  HALF
+  BOTTLE
+  MAGNUM
+  JEROBOAM
+  METHUSELAH
+  SALMANAZAR
+  BALTHAZAR
+  NABUCHADNEZZAR
+}
+
+enum WineType {
+ WHITE
+ RED
+ ROSE
+ SPARKLING
+ DESSERT
+}
+
+enum WineStatus {
+ CANDIDATE
+ CURRENT
+ HOLLOW
+}
+
+Wine -down- WineEstate 
+Wine -left- WineStatus 
+Wine -right- WineType
+Wine -up- BottleSize
+
+@enduml
