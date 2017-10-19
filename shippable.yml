@@ -1,0 +1,22 @@
+language: java
+
+jdk:
+  - oraclejdk8
+
+#Only checkout from master
+branches:
+  only:
+  - master
+
+#Install graphviz for plantUML schemas as png....
+before_install:
+  - sudo apt-get install graphviz
+
+build:
+  ci:
+      #Create folders for test and code coverage
+      - mkdir -p shippable/testresults
+      - mkdir -p shippable/codecoverage
+
+      #Clean Install the uber aggregator
+      - mvn clean install -DskipTests
