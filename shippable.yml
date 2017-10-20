@@ -18,5 +18,5 @@ build:
       - mkdir -p shippable/testresults
       - mkdir -p shippable/codecoverage
 
-      #Clean Install the uber aggregator
+      - mvn clean install -DskipTests -f vinotekk-spring-dependencies/pom.xml
       - mvn clean install -DskipTests -f vinotekk-parent/pom.xml
